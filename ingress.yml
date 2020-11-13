@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: k3s-blinker-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: blinker.apps.k3s
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: k3s-blinker-svc
+              servicePort: 8082

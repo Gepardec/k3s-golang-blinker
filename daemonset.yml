@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    name: k3s-golang-blinker
+  name: k3s-golang-blinker
+spec:
+  selector:
+    matchLabels:
+      name: k3s-golang-blinker
+  template:
+    metadata:
+      labels:
+        name: k3s-golang-blinker
+    spec:
+      containers:
+        - image: gepardec/k3s-golang-blinker:1.0.1-arm
+          name: k3s-golang-blinker
+          resources: {}
+          securityContext:
+            privileged: true
